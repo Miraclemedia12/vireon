@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vireon | Futuristic Digital Earning Platform</title>
+    <meta name="description" content="Vireon is a premium ecosystem offering verified digital earning opportunities through multiple programs and high-performance technologies.">
+    <!-- Premium Google Fonts Architecture -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Embedded Link to Separate Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- --- EXTRA PREMIUM SYSTEM OVERLAYS --- -->
+    <div id="scroll-progress-container">
+        <div id="scroll-progress-bar"></div>
+    </div>
+
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-follower"></div>
+
+    <canvas id="ambient-particle-canvas"></canvas>
+
+    <!-- ==========================================================================
+       1. CINEMATIC LOADING ENGINE
+       ========================================================================== -->
+    <div id="vireon-loader">
+        <div class="loader-logo-wrapper">
+            <img src="logo.png" alt="Vireon Premium Logo" class="loader-logo">
+        </div>
+        <div class="loader-track">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       2. GLASSMORPHIC NAVIGATION BAR
+       ========================================================================== -->
+    <nav class="vireon-nav-wrapper" id="vireon-navbar">
+        <div class="nav-container">
+            <a href="#home" class="brand-identity">
+                <img src="logo.png" alt="Vireon Identity Mark" class="brand-logo">
+                <span class="brand-name">VIREON</span>
+            </a>
+            
+            <ul class="nav-menu-links">
+                <li><a href="#home" class="nav-item-link active">Home</a></li>
+                <li><a href="#features" class="nav-item-link">Features</a></li>
+                <li><a href="#programs" class="nav-item-link">Programs</a></li>
+                <li><a href="#how-it-works" class="nav-item-link">How It Works</a></li>
+                <li><a href="#about" class="nav-item-link">About</a></li>
+                <li><a href="#faq" class="nav-item-link">FAQ</a></li>
+                <li><a href="#contact" class="nav-item-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions-block">
+                <button class="theme-toggle-btn" aria-label="Toggle Interface Theme">
+                    <!-- Icon populated dynamically via JavaScript Engine -->
+                </button>
+                <a href="#contact" class="btn-premium btn-cyan">Register</a>
+                <button class="mobile-hamburger" aria-label="Expand Navigation Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+       3. FULL-SCREEN HERO SECTION
+       ========================================================================== -->
+    <section id="home" class="hero-viewport-section">
+        <div class="hero-layout-grid">
+            <div class="hero-text-engine">
+                <div class="hero-badge-announcement">The Future of Earning is Sovereign</div>
+                <h1 class="hero-main-title">
+                    What is <span class="glow-gradient">Vireon?</span>
+                </h1>
+                <p class="hero-description-text">
+                    Vireon is an advanced digital architecture offering diversified, decentralized earning streams. By participating in specialized optimization programs and high-liquidity analytical tasks, users unlock sustainable global rewards structured under definitive cryptographic parameters.
+                </p>
+                <div class="hero-button-group">
+                    <a href="#contact" class="btn-premium btn-cyan">Get Started</a>
+                    <a href="#features" class="btn-premium btn-outline">Explore Features</a>
+                </div>
+            </div>
+
+            <div class="hero-artwork-frame">
+                <div class="artwork-ambient-glow"></div>
+                <!-- Premium Custom Corporate Artwork Concept Asset -->
+                <img src="hero-artwork.png" alt="Vireon Premium Luxurious Executive Throne Visual" class="premium-throne-asset">
+            </div>
+        </div>
+
+        <a href="#features" class="scroll-indicator-node" aria-label="Scroll Downwards">
+            <span>Scroll</span>
+            <div class="scroll-indicator-mouse">
+                <div class="scroll-indicator-wheel"></div>
+            </div>
+        </a>
+    </section>
+
+    <!-- ==========================================================================
+       4. WHY VIREON (BENEFITS GRID)
+       ========================================================================== -->
+    <section id="features" class="section-structural-container reveal-on-scroll">
+        <div class="section-header-block">
+            <span class="section-sub-label">Core Architecture</span>
+            <h2 class="section-main-heading">Engineered for Precision Performance</h2>
+        </div>
+
+        <div class="benefits-layout-grid">
+            <!-- Card 1 -->
+            <div class="premium-glass-card">
+                <div class="card-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                </div>
+                <h3 class="card-main-title">Modern Technology</h3>
+                <p class="card-detail-text">Built on latency-optimized frameworks utilizing hardware-accelerated interfaces and real-time processing pipelines for flawless execution.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="premium-glass-card">
+                <div class="card-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h3 class="card-main-title">Multiple Income Structures</h3>
+                <p class="card-detail-text">Access 11 distinct corporate optimization vectors across media, computing, analytical, and decentralized resource lending models.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="premium-glass-card">
+                <div class="card-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <h3 class="card-main-title">Fast User Experience</h3>
+                <p class="card-detail-text">Instant transitions and lightning-fast calculations preserve high interaction consistency across all platforms and form factors.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="premium-glass-card">
+                <div class="card-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                </div>
+                <h3 class="card-main-title">Easy to Use</h3>
+                <p class="card-detail-text">A high-fidelity minimalist operational layout lets you activate complex programmatic pipelines with single-click precision.</p>
+            </div>
+            <!-- Card 5 -->
+            <div class="premium-glass-card">
+                <div class="card-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <h3 class="card-main-title">Secure Platform</h3>
+                <p class="card-detail-text">Protected by modern military-grade encrypted communication parameters and multi-layer compliance tracking matrices.</p>
+            </div>
+            <!-- Card 6 -->
+            <div class="premium-glass-card">
+                <div class="card-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3 class="card-main-title">Community Driven</h3>
+                <p class="card-detail-text">Backed by an elite global community of digital operators, scaling structural optimization parameters in complete alignment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       5. HOW TO EARN (11 EARNING PROGRAMS SHOWCASE)
+       ========================================================================== -->
+    <section id="programs" class="section-structural-container reveal-on-scroll">
+        <div class="section-header-block">
+            <span class="section-sub-label">Ecosystem Matrices</span>
+            <h2 class="section-main-heading">Eleven Advanced Earning Vectors</h2>
+        </div>
+
+        <div class="programs-layout-grid">
+            <!-- Program 1 -->
+            <div class="program-card-wrapper">
+                <div class="premium-glass-card">
+                    <div class="program-card-head">
+                        <div class="program-meta-title">
+                            <div class="card-icon-container">01</div>
+                            <h3 class="card-main-title">Vireon Snap Pro</h3>
+                        </div>
+                        <span class="program-expand-chevron">▼</span>
+                    </div>
+                    <div class="program-body-panel">
+                        <div class="program-divider-line"></div>
+                        <p class="card-detail-text">Monetize high-definition image assets and metadata extraction pipelines through verified micro-curation media interactions built for visual data modeling.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 2 -->
+            <div class="program-card-wrapper">
+                <div class="premium-glass-card">
+                    <div class="program-card-head">
+                        <div class="program-meta-title">
+                            <div class="card-icon-container">02</div>
+                            <h3 class="card-main-title">Vireon Call Cash</h3>
+                        </div>
+                        <span class="program-expand-chevron">▼</span>
+                    </div>
+                    <div class="program-body-panel">
+                        <div class="program-divider-line"></div>
+                        <p class="card-detail-text">Earn rewards by facilitating secure, audited communication bandwidth evaluations for enterprise connectivity testing frameworks.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 3 -->
+            <div class="program-card-wrapper">
+                <div class="premium-glass-card">
+                    <div class="program-card-head">
+                        <div class="program-meta-title">
+                            <div class="card-icon-container">03</div>
+                            <h3 class="card-main-title">Vireon Street Reward</h3>
+                        </div>
+                        <span class="program-expand-chevron">▼</span>
+                    </div>
+                    <div class="program-body-panel">
+                        <div class="program-divider-line"></div>
+                        <p class="card-detail-text">Participate in decentralized geospatial mapping and local merchant structural verification tasks to optimize mapping data networks.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 4 -->
+            <div class="program-card-wrapper">
+                <div class="premium-glass-card">
+                    <div class="program-card-head">
+                        <div class="program-meta-title">
+                            <div class="card-icon-container">04</div>
+                            <h3 class="card-main-title">Vireon IQ</h3>
+                        </div>
+                        <span class="program-expand-chevron">▼</span>
+                    </div>
+                    <div class="program-body-panel">
+                        <div class="program-divider-line"></div>
+                        <p class="card-detail-text">Engage in high-tier cognitive profiling, problem-solving sandboxes, and structural training operations for machine learning logic maps.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 5 -->
+            <div class="program-card-wrapper">
+                <div class="premium-glass-card">
+                    <div class="program-card-head">
+                        <div class="program-meta-title">
+                            <div class="card-icon-container">05</div>
+                            <h3 class="card-main-title">Vireon Google Monetization</h3>
+                        </div>
+                        <span class="program-expand-chevron">▼</span>
+                    </div>
+                    <div class="program-body-panel">
+                        <div class="program-divider-line"></div>
+                        <p class="card-detail-text">Optimize digital property visibility indicators, search engine configuration indices, and targeted ad-revenue sharing parameters safely.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 6 -->
+            <div class="program-card-wrapper">
+                <div class="premium-glass-card">
+                    <div class="program-card-head">
+                        <div class="program-meta-title">
+                            <div class="card-icon-container">06</div>
+                            <h3 class="card-main-title">Vireon Easy Own</h3>
+                        </div>
+                        <span class="program-expand-chevron">▼</span>
+                    </div>
+                    <div class="program-body-panel">
+                        <div class="program-divider-line"></div>
+                        <p class="card-detail-text">Unlock fractional ownership configurations in yielding high-tier digital intellectual properties and domain node systems.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 7 -->
+            <div class="program-card-wrapper">
+                <div class="premium-glass-card">
+                    <div class="program-card-head">
+                        <div class="program-meta-title">
+                            <div class="card-icon-container">07</div>
+                            <h3 class="card-main-title">Vireon Quick Loan</h3>
+                        </div>
+                        <span class="program-expand-chevron">▼</span>
+                    </div>
+                    <div class="program-body-panel">
+                        <div class="program-divider-line"></div>
+                        <p class="card-detail-text">Access dynamic liquidity options based directly on your internal platform credibility metrics and historical performance indicators.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 8 -->
+            <div class="program-card-wrapper">
+                <div class="premium-glass-card">
+                    <div class="program-card-head">
+                        <div class="program-meta-title">
+                            <div class="card-icon-container">08</div>
+                            <h3 class="card-main-title">Vireon Surveys</h3>
+                        </div>
+                        <span class="program-expand-chevron">▼</span>
+                    </div>
+                    <div class="program-body-panel">
+                        <div class="program-divider-line"></div>
+                        <p class="card-detail-text">Provide direct insights to premium global market intelligence corporations through structured data collection matrices.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 9 -->
+            <div class="program-card-wrapper">
+                <div class="premium-glass-card">
+                    <div class="program-card-head">
+                        <div class="program-meta-title">
+                            <div class="card-icon-container">09</div>
+                            <h3 class="card-main-title">Vireon X Revenue Program</h3>
+                        </div>
+                        <span class="program-expand-chevron">▼</span>
+                    </div>
+                    <div class="program-body-panel">
+                        <div class="program-divider-line"></div>
+                        <p class="card-detail-text">Leverage public platform visibility signals and social network metrics to extract scalable performance allocations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 10 -->
+            <div class="program-card-wrapper">
+                <div class="premium-glass-card">
+                    <div class="program-card-head">
+                        <div class="program-meta-title">
+                            <div class="card-icon-container">10</div>
+                            <h3 class="card-main-title">Vireon Queen to Profit</h3>
+                        </div>
+                        <span class="program-expand-chevron">▼</span>
+                    </div>
+                    <div class="program-body-panel">
+                        <div class="program-divider-line"></div>
+                        <p class="card-detail-text">Engage in unique royal-tier strategy simulations and predictive task sequences to optimize continuous yield algorithms.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program 11 -->
+            <div class="program-card-wrapper">
+                <div class="premium-glass-card">
+                    <div class="program-card-head">
+                        <div class="program-meta-title">
+                            <div class="card-icon-container">11</div>
+                            <h3 class="card-main-title">Vireon Converse</h3>
+                        </div>
+                        <span class="program-expand-chevron">▼</span>
+                    </div>
+                    <div class="program-body-panel">
+                        <div class="program-divider-line"></div>
+                        <p class="card-detail-text">Convert processing metrics and conversational data insights into platform assets via high-fidelity chat validation nodes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       6. HOW IT WORKS (CHRONOLOGICAL TIMELINE ENGINE)
+       ========================================================================== -->
+    <section id="how-it-works" class="section-structural-container reveal-on-scroll">
+        <div class="section-header-block">
+            <span class="section-sub-label">Execution Path</span>
+            <h2 class="section-main-heading">Systematic Integration Sequence</h2>
+        </div>
+
+        <div class="timeline-track-system">
+            <!-- Step 1 -->
+            <div class="timeline-event-node">
+                <div class="timeline-indicator-marker">
+                    <span class="timeline-step-digit">01</span>
+                </div>
+                <div class="timeline-content-card">
+                    <h3 class="card-main-title">Create Account</h3>
+                    <p class="card-detail-text">Initialize your secure sovereign credentials within the centralized platform protocol interface framework seamlessly.</p>
+                </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="timeline-event-node">
+                <div class="timeline-indicator-marker">
+                    <span class="timeline-step-digit">02</span>
+                </div>
+                <div class="timeline-content-card">
+                    <h3 class="card-main-title">Activate Your Membership</h3>
+                    <p class="card-detail-text">Verify your dynamic system parameter status levels and clear core regulatory compliance verification nodes.</p>
+                </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="timeline-event-node">
+                <div class="timeline-indicator-marker">
+                    <span class="timeline-step-digit">03</span>
+                </div>
+                <div class="timeline-content-card">
+                    <h3 class="card-main-title">Choose an Earning Program</h3>
+                    <p class="card-detail-text">Deploy target capital allocations or computational vectors into any of the eleven highly structured internal platforms.</p>
+                </div>
+            </div>
+            <!-- Step 4 -->
+            <div class="timeline-event-node">
+                <div class="timeline-indicator-marker">
+                    <span class="timeline-step-digit">04</span>
+                </div>
+                <div class="timeline-content-card">
+                    <h3 class="card-main-title">Complete Eligible Activities</h3>
+                    <p class="card-detail-text">Execute algorithmic verification steps, task cycles, or bandwidth provision pipelines accurately according to system specs.</p>
+                </div>
+            </div>
+            <!-- Step 5 -->
+            <div class="timeline-event-node">
+                <div class="timeline-indicator-marker">
+                    <span class="timeline-step-digit">05</span>
+                </div>
+                <div class="timeline-content-card">
+                    <h3 class="card-main-title">Receive Rewards According to Platform Rules</h3>
+                    <p class="card-detail-text">Settle systematic distributions instantly inside your cryptographic balance ledger under strict non-custodial protection formulas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       7. LIVE PLATFORM STATISTICS DASHBOARD
+       ========================================================================== -->
+    <section class="section-structural-container reveal-on-scroll">
+        <div class="stats-dashboard-row">
+            <div class="stat-counter-unit">
+                <div class="stat-numerical-display" data-target="142500" data-duration="2000">0</div>
+                <div class="stat-label-text">Registered Members</div>
+            </div>
+            <div class="stat-counter-unit">
+                <div class="stat-numerical-display" data-target="98400" data-duration="2000">0</div>
+                <div class="stat-label-text">Active Members</div>
+            </div>
+            <div class="stat-counter-unit">
+                <div class="stat-numerical-display" data-target="1240500" data-duration="2500">0</div>
+                <div class="stat-label-text">Tasks Completed</div>
+            </div>
+            <div class="stat-counter-unit">
+                <div class="stat-numerical-display" data-target="3450000" data-duration="2500">0</div>
+                <div class="stat-label-text">Rewards Paid ($)</div>
+            </div>
+            <div class="stat-counter-unit">
+                <div class="stat-numerical-display" data-target="45" data-duration="1500">0</div>
+                <div class="stat-label-text">Countries Reached</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       8. PLATFORM REGISTRATION INFORMATION
+       ========================================================================== -->
+    <section id="about" class="section-structural-container reveal-on-scroll">
+        <div class="section-header-block">
+            <span class="section-sub-label">Corporate Transparency</span>
+            <h2 class="section-main-heading">Institutional Verification Matrix</h2>
+        </div>
+
+        <div class="info-display-grid">
+            <div class="info-cards-subgrid">
+                <div class="info-minimal-card">
+                    <div class="info-label-header">Business Name</div>
+                    <div class="info-value-string">Vireon Technologies International Ltd</div>
+                </div>
+                <div class="info-minimal-card">
+                    <div class="info-label-header">CAC Registration Number</div>
+                    <div class="info-value-string">RC-1794302-PL</div>
+                </div>
+                <div class="info-minimal-card">
+                    <div class="info-label-header">Office Address</div>
+                    <div class="info-value-string">Level 4, Corporate Alpha Tower, Financial District</div>
+                </div>
+                <div class="info-minimal-card">
+                    <div class="info-label-header">Email Address</div>
+                    <div class="info-value-string">operations@vireon.platform</div>
+                </div>
+                <div class="info-minimal-card">
+                    <div class="info-label-header">Phone Number</div>
+                    <div class="info-value-string">+234 (0) 812 345 6789</div>
+                </div>
+                <div class="info-minimal-card">
+                    <div class="info-label-header">Support Hours</div>
+                    <div class="info-value-string">24/7/365 Autonomous Automated Assistance</div>
+                </div>
+            </div>
+
+            <!-- Dynamic Right Side CAC Picture Framework Implementation -->
+            <div class="premium-glass-card compliance-blockquote">
+                <div class="info-label-header" style="margin-bottom: 1rem;">Corporate Affairs Commission Registration Certificate</div>
+                <img src="cac-certificate.jpg" alt="Vireon Official CAC Verification Certificate Scan Documents" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 1.5rem; filter: saturate(0.8); border: 1px solid var(--border-premium);">
+                <p>"Vireon strictly complies with regional legislative and regulatory enforcement rules, providing legal, transparent digital computing structures to verified entities globally."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       9. TESTIMONIALS (PREMIUM ENGINE SLIDER)
+       ========================================================================== -->
+    <section class="section-structural-container reveal-on-scroll">
+        <div class="section-header-block">
+            <span class="section-sub-label">Operator Verification</span>
+            <h2 class="section-main-heading">Trusted Across Global Nodes</h2>
+        </div>
+
+        <div class="testimonials-slider-viewport">
+            <div class="testimonials-slider-track">
+                <!-- Slide 1 -->
+                <div class="testimonial-slide-unit">
+                    <div class="testimonial-star-rating">★★★★★</div>
+                    <p class="testimonial-narrative-text">
+                        "The micro-latency transitions across the programmatic earning nodes are remarkably engineered. Vireon functions with the structural predictability of an elite financial ledger platform."
+                    </p>
+                    <div class="testimonial-user-profile">
+                        <img src="avatar1.jpg" alt="Marcus Vance Portrait" class="user-avatar-frame">
+                        <div>
+                            <div class="user-profile-name">Marcus Vance</div>
+                            <div class="user-profile-role">Systems Analyst, Node Operator</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="testimonial-slide-unit">
+                    <div class="testimonial-star-rating">★★★★★</div>
+                    <p class="testimonial-narrative-text">
+                        "The clarity of the 11 corporate earning programs makes optimization effortless. Vireon Technologies provides the most transparent digital framework I have interacted with this decade."
+                    </p>
+                    <div class="testimonial-user-profile">
+                        <img src="avatar2.jpg" alt="Elena Rostova Portrait" class="user-avatar-frame">
+                        <div>
+                            <div class="user-profile-name">Elena Rostova</div>
+                            <div class="user-profile-role">Algorithmic Content Strategist</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-navigation-controls">
+                <button class="slider-arrow-btn prev" aria-label="Previous Testimonial">◀</button>
+                <div class="slider-dot-indicators"></div>
+                <button class="slider-arrow-btn next" aria-label="Next Testimonial">▶</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       10. FAQ SECTION (ACCORDION MODULATOR)
+       ========================================================================== -->
+    <section id="faq" class="section-structural-container reveal-on-scroll">
+        <div class="section-header-block">
+            <span class="section-sub-label">Knowledge Base</span>
+            <h2 class="section-main-heading">Frequently Addressed Parameters</h2>
+        </div>
+
+        <div class="faq-accordion-stack">
+            <!-- Item 1 -->
+            <div class="faq-accordion-item">
+                <button class="faq-trigger-header">
+                    <span>What is Vireon?</span>
+                    <span class="faq-chevron-icon">▼</span>
+                </button>
+                <div class="faq-answer-panel">
+                    <div class="faq-answer-content">
+                        Vireon is a modern, legal computing architecture designed to connect individual digital operators with institutional market activities across eleven distinct, automated reward structures.
+                    </div>
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="faq-accordion-item">
+                <button class="faq-trigger-header">
+                    <span>How do I register?</span>
+                    <span class="faq-chevron-icon">▼</span>
+                </button>
+                <div class="faq-answer-panel">
+                    <div class="faq-answer-content">
+                        Click on the primary "Register Now" or "Get Started" buttons throughout the interface to initialize a secure system user identification block and enter setup protocols.
+                    </div>
+                </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="faq-accordion-item">
+                <button class="faq-trigger-header">
+                    <span>How do I earn?</span>
+                    <span class="faq-chevron-icon">▼</span>
+                </button>
+                <div class="faq-answer-panel">
+                    <div class="faq-answer-content">
+                        Earnings are generated based on programmatic completion parameters across our 11 vectors, including metadata classification, validation loops, resource sharing, and algorithmic testing pools.
+                    </div>
+                </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="faq-accordion-item">
+                <button class="faq-trigger-header">
+                    <span>When do I receive rewards?</span>
+                    <span class="faq-chevron-icon">▼</span>
+                </button>
+                <div class="faq-answer-panel">
+                    <div class="faq-answer-content">
+                        Rewards are distributed systematically into the dynamic balance module of your profile upon formal confirmation of task criteria accuracy tracking parameters, matching platform rules.
+                    </div>
+                </div>
+            </div>
+            <!-- Item 5 -->
+            <div class="faq-accordion-item">
+                <button class="faq-trigger-header">
+                    <span>How do I contact support?</span>
+                    <span class="faq-chevron-icon">▼</span>
+                </button>
+                <div class="faq-answer-panel">
+                    <div class="faq-answer-content">
+                        You can interface with our autonomous assistance matrix via the official dashboard mail structures or immediately trigger our live peripheral floating communications node links.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       11. THE FINAL CTA WRAPPER
+       ========================================================================== -->
+    <section id="contact" class="section-structural-container reveal-on-scroll">
+        <div class="final-cta-billboard">
+            <div class="cta-content-bounds">
+                <h2 class="section-main-heading">Join the Future of Digital Opportunities</h2>
+                <p class="hero-description-text">
+                    Scale your digital interactions using verified premium tools. Initialize your secure credential ledger profile on Vireon right now.
+                </p>
+                <a href="#contact" class="btn-premium btn-cyan" style="padding: 1rem 2.5rem; font-size: 1.05rem;">Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       12. HIGH-END TERMINAL FOOTER LAYER
+       ========================================================================== -->
+    <footer class="vireon-footer-anchor">
+        <div class="footer-primary-layout">
+            <div class="footer-brand-summary">
+                <a href="#home" class="brand-identity">
+                    <img src="logo.png" alt="Vireon Core Symbol" class="brand-logo">
+                    <span class="brand-name">VIREON</span>
+                </a>
+                <p class="footer-description">
+                    Providing cutting-edge software integrations and systematic distributed tasks optimization frameworks for elite digital operations.
+                </p>
+                <div class="footer-social-cluster">
+                    <a href="#" class="social-icon-node" aria-label="Connect via X Profile">𝕏</a>
+                    <a href="#" class="social-icon-node" aria-label="Connect via Telegram">✈</a>
+                    <a href="#" class="social-icon-node" aria-label="Connect via Medium">Ⓜ</a>
+                </div>
+            </div>
+
+            <div class="footer-links-and-newsletter">
+                <div>
+                    <div class="footer-column-header">Ecosystem</div>
+                    <ul class="footer-navigation-list">
+                        <li><a href="#features" class="footer-nav-anchor">Features</a></li>
+                        <li><a href="#programs" class="footer-nav-anchor">Earning Matrix</a></li>
+                        <li><a href="#how-it-works" class="footer-nav-anchor">System Track</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-column-header">Compliance</div>
+                    <ul class="footer-navigation-list">
+                        <li><a href="#about" class="footer-nav-anchor">About Board</a></li>
+                        <li><a href="#faq" class="footer-nav-anchor">Faq Index</a></li>
+                        <li><a href="#" class="footer-nav-anchor">Privacy Matrix</a></li>
+                        <li><a href="#" class="footer-nav-anchor">Terms Protocol</a></li>
+                    </ul>
+                </div>
+                <div class="newsletter-subscription-block">
+                    <div class="footer-column-header">Newsletter</div>
+                    <p class="footer-description" style="margin-bottom: 1rem; font-size: 0.85rem;">Receive encrypted core operational platform updates.</p>
+                    <form class="newsletter-form-wrapper" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="operator@domain.com" class="newsletter-input-field" aria-label="Newsletter Email Input">
+                        <button type="submit" class="newsletter-submit-btn" aria-label="Submit Subscription">➔</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-terminal-base">
+            <div>&copy; 2026 Vireon Technologies International Ltd. All rights sovereign.</div>
+            <button id="back-to-top" class="back-to-top-trigger" onclick="window.scrollTo({top:0, behavior:'smooth'});" aria-label="Return to Top Screen Anchor">▲</button>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+       13. PERIPHERAL FLOATING COMMUNICATION OVERLAY
+       ========================================================================== -->
+    <a href="https://wa.me/2348123456789" class="floating-whatsapp-trigger" target="_blank" rel="noopener noreferrer" aria-label="Launch WhatsApp Sovereign Sync Verification Support Channel">
+        <!-- Minimal clean geometric speech bubble symbol inside high contrast canvas layer -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    </a>
+
+    <!-- Embedded Execution Engine -->
+    <script src="script.js"></script>
+</body>
+</html>
