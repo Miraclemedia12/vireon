@@ -106,19 +106,6 @@ body {
     box-shadow: 0 0 8px var(--color-cyan);
 }
 
-.logo-container {
-    display: flex;
-    justify-content: flex-start; /* Or 'center' if you want it centered */
-    padding: 10px 0;
-}
-
-.brand-logo {
-    display: block;
-    width: 200px;       /* Increase this number to make it bigger (e.g., 200px) */
-    height: auto;       /* This keeps the logo from looking stretched */
-    object-fit: contain;
-}
-
 /* Custom Animated Interactive Cursor */
 .custom-cursor {
     width: 8px;
@@ -1397,4 +1384,17 @@ body.cursor-hover .custom-cursor-follower {
     .benefits-layout-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.logo-container {
+    display: flex;
+    justify-content: flex-start; /* Or 'center' if you want it centered */
+    padding: 10px 0;
+}
+
+.brand-logo {
+    display: block;
+    width: 200px;       /* Increase this number to make it bigger (e.g., 200px) */
+    height: auto;       /* This keeps the logo from looking stretched */
+    object-fit: contain;
 }
