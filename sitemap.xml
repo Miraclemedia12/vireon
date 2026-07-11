@@ -6,7 +6,7 @@
     
     <!-- Core Home Page Routing -->
     <url>
-        <loc>http://vireon-official.site/</loc>
+        <loc>https://vireon-official.site/</loc>
         <lastmod>2026-07-11</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -14,7 +14,7 @@
 
     <!-- Account Signup & Onboarding Pipeline -->
     <url>
-        <loc>http://vireon-official.site/signup.html</loc>
+        <loc>https://vireon-official.site/signup.html</loc>
         <lastmod>2026-07-11</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
