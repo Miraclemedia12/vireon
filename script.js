@@ -552,3 +552,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ignition of Application Lifecycle
     initApp();
 });
+
+/* 1. Basic Reset to fix the "jamming" */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+/* 2. Hide the Hamburger on Desktop */
+.menu-toggle { display: none; cursor: pointer; }
+
+/* 3. The Responsive Media Query (For Phones) */
+@media (max-width: 768px) {
+    .menu-toggle { display: block; } /* Show the three lines on phone */
+    
+    .nav-links {
+        display: none; /* Hide the menu by default on phone */
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: #0A1B35;
+    }
+    
+    /* Make the logo bigger as you requested */
+    .brand-logo { width: 120px; } 
+}
