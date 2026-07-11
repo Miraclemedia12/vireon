@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund & Cancellation Policy | Vireon Digital International</title>
+    <!-- Linking global framework sheets -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Premium Spacing Systems - Maximum Airflow Framework */
+        .refund-layout-viewport {
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 160px 2rem 8rem 2rem;
+            display: flex;
+            gap: 5rem; /* Generous separation between index sidebar and data streams */
+        }
+
+        /* Left Side Terminal - Fixed Anchored Control */
+        .refund-sidebar-deck {
+            position: sticky;
+            top: 120px;
+            width: 280px;
+            height: fit-content;
+            flex-shrink: 0;
+        }
+
+        .sidebar-navigation-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sidebar-nav-node a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            letter-spacing: 0.01em;
+        }
+
+        /* Active highlight status matching screenshot capsule design */
+        .sidebar-nav-node.active-matrix-state a {
+            color: #4d70ff; /* Fluid neon active tone */
+            background: rgba(77, 112, 255, 0.08); /* Transparent blue capsule backing */
+            font-weight: 600;
+        }
+
+        .sidebar-nav-node a:hover:not(.active-matrix-state a) {
+            color: var(--text-pure);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Right Side Core Content Stream */
+        .refund-content-stream {
+            flex-grow: 1;
+            max-width: 820px;
+        }
+
+        .refund-structural-clause {
+            scroll-margin-top: 130px; /* Synchronizes targeting systems perfectly */
+            margin-bottom: 5.5rem; /* Spacious professional distance layout */
+        }
+
+        .refund-structural-clause h2 {
+            font-size: 1.85rem;
+            color: var(--text-pure);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .refund-structural-clause p, .refund-structural-clause li {
+            font-size: 1.08rem;
+            line-height: 1.95;
+            color: var(--text-main);
+        }
+
+        .refund-structural-clause ul {
+            padding-left: 1.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .refund-structural-clause li {
+            margin-bottom: 0.85rem;
+        }
+
+        /* --- Global Footer Interface Configuration --- */
+        .vireon-footer-wrapper {
+            background: #030914; 
+            border-top: 1px solid var(--border-glow);
+            padding: 6rem 2rem 3.5rem 2rem;
+        }
+
+        .footer-layout-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand-column {
+            flex: 1.3;
+            min-width: 280px;
+        }
+
+        .footer-link-column {
+            flex: 0.8;
+            min-width: 180px;
+        }
+
+        .footer-dispatch-column {
+            flex: 1.2;
+            min-width: 280px;
+        }
+
+        .footer-column-heading {
+            color: var(--text-pure);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.75rem;
+        }
+
+        .footer-navigation-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-navigation-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-navigation-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-navigation-links a:hover {
+            color: var(--color-cyan);
+        }
+
+        /* Dispatch Input Console Components */
+        .dispatch-input-container {
+            display: flex;
+            align-items: center;
+            background: #071328;
+            border: 1px solid var(--border-glow);
+            border-radius: 8px;
+            padding: 0.5rem 0.5rem 0.5rem 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .dispatch-email-field {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-pure);
+            font-size: 0.95rem;
+            width: 100%;
+        }
+
+        .dispatch-submit-btn {
+            background: var(--color-cyan);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #030914;
+            transition: transform 0.2s ease;
+        }
+
+        .dispatch-submit-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-social-row {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-circle-node {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-circle-node:hover {
+            border-color: var(--color-cyan);
+            color: var(--color-cyan);
+            background: rgba(0, 242, 254, 0.04);
+        }
+
+        /* Responsive Flow Adaptation Matrices */
+        @media (max-width: 992px) {
+            .refund-layout-viewport {
+                flex-direction: column;
+                gap: 4rem;
+                padding-top: 130px;
+            }
+            .refund-sidebar-deck {
+                position: relative;
+                top: 0;
+                width: 100%;
+                border-bottom: 1px solid var(--border-glow);
+                padding-bottom: 2rem;
+            }
+            .sidebar-navigation-menu {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vireon-footer-wrapper {
+                padding: 4rem 1.25rem 2.5rem 1.25rem;
+            }
+            .refund-structural-clause {
+                margin-bottom: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+         GLOBAL HEADER NAVIGATION
+         ========================================================================== -->
+    <header class="vireon-nav-wrapper" id="vireon-navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand-identity">
+                <div class="logo-container">
+                    <img src="logo.png" alt="Vireon Logo" class="brand-logo">
+                </div>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu-links">
+                    <li><a href="index.html#home" class="nav-item-link">Home</a></li>
+                    <li><a href="index.html#features" class="nav-item-link">Features</a></li>
+                    <li><a href="index.html#why-vireon" class="nav-item-link">Why Vireon</a></li>
+                    <li><a href="index.html#how-it-works" class="nav-item-link">How It Works</a></li>
+                    <li><a href="index.html#platform-info" class="nav-item-link">Certification</a></li>
+                    <li><a href="index.html#faq" class="nav-item-link">FAQ</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions-block">
+                <button class="theme-toggle-btn" aria-label="Toggle UI Theme Matrix"></button>
+                <a href="reward.html" class="btn-premium btn-cyan">Register Now</a>
+                <button class="mobile-hamburger" aria-label="Open Navigation Drawer">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+         MAIN SPLIT VIEW INTERFACE
+         ========================================================================== -->
+    <main class="refund-layout-viewport">
+        
+        <!-- Left Column Anchor Deck -->
+        <aside class="refund-sidebar-deck">
+            <div style="margin-bottom: 2rem; padding-left: 1.2rem;">
+                <span class="section-sub-label" style="text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.85rem;">Financial Deck</span>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">Last updated: January 2026</p>
+            </div>
+            <ul class="sidebar-navigation-menu">
+                <li class="sidebar-nav-node active-matrix-state"><a href="#section-1">1. Overview</a></li>
+                <li class="sidebar-nav-node"><a href="#section-2">2. Registration Fee</a></li>
+                <li class="sidebar-nav-node"><a href="#section-3">3. Requesting a Refund</a></li>
+                <li class="sidebar-nav-node"><a href="#section-4">4. Refund Processing</a></li>
+                <li class="sidebar-nav-node"><a href="#section-5">5. Non-Refundable Items</a></li>
+                <li class="sidebar-nav-node"><a href="#section-6">6. Contact</a></li>
+            </ul>
+        </aside>
+
+        <!-- Right Column Information Node Processing Stream -->
+        <div class="refund-content-stream">
+            
+            <section id="section-1" class="refund-structural-clause">
+                <h2>1. Overview</h2>
+                <p>This Refund Policy outlines the terms for payments made on the Vireon platform.</p>
+            </section>
+
+            <section id="section-2" class="refund-structural-clause">
+                <h2>2. Registration Fee</h2>
+                <p>The one-time registration fee is non-refundable once payment has been processed and account access has been granted.</p>
+            </section>
+
+            <section id="section-3" class="refund-structural-clause">
+                <h2>3. Requesting a Refund</h2>
+                <p>If you believe a payment was made in error or you have not received access to the platform after payment, please contact our support team at <a href="mailto:support@vireonofficial.com.ng" style="color: var(--color-cyan); text-decoration: none; font-weight: bold;">support@vireonofficial.com.ng</a> within 7 days of payment.</p>
+            </section>
+
+            <section id="section-4" class="refund-structural-clause">
+                <h2>4. Refund Processing</h2>
+                <p>Approved refunds will be processed within 5–10 business days to the original payment method used during registration.</p>
+            </section>
+
+            <section id="section-5" class="refund-structural-clause">
+                <h2>5. Non-Refundable Items</h2>
+                <p>The following items are explicitly designated as non-refundable under any operational status metrics:</p>
+                <ul>
+                    <li>Registration fees after account access has been granted</li>
+                    <li>Any fees or points issued for activities already completed on the platform</li>
+                </ul>
+            </section>
+
+            <section id="section-6" class="refund-structural-clause" style="margin-bottom: 0;">
+                <h2>6. Contact</h2>
+                <p>For refund requests or questions about this policy, contact us at <a href="mailto:support@vireon-official.site" style="color: var(--color-cyan); text-decoration: none; font-weight: bold;">support@vireon-official.site</a> or visit our corporate contact page.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ==========================================================================
+         EXACT VISUAL REPLICA FOOTER COMPONENT
+         ========================================================================== -->
+    <footer class="vireon-footer-wrapper">
+        <div class="footer-layout-grid">
+            
+            <!-- Column 1: Core Branding Deck -->
+            <div class="footer-brand-column">
+                <div class="logo-container" style="margin-bottom: 1.5rem;">
+                    <img src="logo.png" alt="Vireon Logo" class="brand-logo" style="width: 140px;">
+                </div>
+                <p style="color: var(--text-main); font-size: 0.98rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                    Leading contemporary digital transformation activity clearinghouses. Bridging global audience metrics with analytical optimization programs completely in British Pounds.
+                </p>
+                <div class="footer-social-row">
+                    <a href="#" class="social-circle-node" title="X">✕</a>
+                    <a href="#" class="social-circle-node" title="LinkedIn">in</a>
+                    <a href="#" class="social-circle-node" title="Instagram">ig</a>
+                </div>
+            </div>
+
+            <!-- Column 2: Ecosystem Link Array Matrix -->
+            <div class="footer-link-column">
+                <h4 class="footer-column-heading">Ecosystem Core</h4>
+                <ul class="footer-navigation-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#why-vireon">Core Architecture</a></li>
+                    <li><a href="index.html#how-it-works">Onboarding Steps</a></li>
+                    <li><a href="index.html#faq">Ecosystem FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Compliance Protocol Stack -->
+            <div class="footer-link-column">
+                <h4 class="footer-column-heading">Compliance Deck</h4>
+                <ul class="footer-navigation-links">
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Operation</a></li>
+                    <li><a href="contact.html">Corporate Contact</a></li>
+                    <li><a href="refund.html" style="color: var(--color-cyan); font-weight: 600;">Refund Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Terminal Dispatch Console -->
+            <div class="footer-dispatch-column">
+                <h4 class="footer-column-heading">Global Dispatch</h4>
+                <p style="color: var(--text-main); font-size: 0.98rem; line-height: 1.6;">
+                    Subscribe to receive instant updates regarding newly deployed tracking campaigns.
+                </p>
+                <div class="dispatch-input-container">
+                    <input type="email" placeholder="Enter security email..." class="dispatch-email-field" aria-label="Subscription field">
+                    <button class="dispatch-submit-btn" aria-label="Submit Form">→</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Global Base System Sub-node -->
+        <div style="max-width: 1200px; margin: 0 auto; padding-top: 2.5rem; margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: left;">
+            <p style="color: var(--text-muted); font-size: 0.88rem; letter-spacing: 0.02em;">
+                &copy; 2026 Vireon Digital International Ltd. All absolute rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         LIGHTWEIGHT DYNAMIC ACTIVE SCROLL CONTROLLER SCRIPT
+         ========================================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.refund-structural-clause');
+            const navItems = document.querySelectorAll('.sidebar-navigation-menu li');
+
+            window.addEventListener('scroll', () => {
+                let activeId = "";
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - 160)) {
+                        activeId = section.getAttribute('id');
+                    }
+                });
+
+                navItems.forEach(item => {
+                    item.classList.remove('active-matrix-state');
+                    const linkAnchor = item.querySelector('a').getAttribute('href');
+                    if (linkAnchor === `#${activeId}`) {
+                        item.classList.add('active-matrix-state');
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
