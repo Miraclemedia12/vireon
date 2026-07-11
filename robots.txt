@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Point Google directly to your sitemap location
+Sitemap: https://vireon-official.site/sitemap.xml
