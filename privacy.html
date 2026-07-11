@@ -3,12 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Vireon</title>
+    <title>Privacy Policy | Vireon Digital International</title>
+    <!-- Linking your global style sheets -->
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global safety reset to kill mobile jam-packing instantly */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Premium Spacing Layout Variables */
+        .privacy-main-viewport {
+            padding: 160px 2rem 6rem 2rem; /* Massive upper room below sticky nav */
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .privacy-content-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 4.5rem 4rem; /* Wide open space inside the card */
+            box-shadow: var(--shadow-premium);
+            margin-bottom: 5rem;
+        }
+
+        .privacy-clause-block {
+            margin-bottom: 3.5rem; /* Wide gap between policy points */
+        }
+
+        .privacy-clause-block h3 {
+            font-size: 1.45rem;
+            color: var(--text-pure);
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.02em;
+        }
+
+        .privacy-clause-block p, .privacy-clause-block li {
+            font-size: 1.08rem;
+            line-height: 1.9;
+            color: var(--text-main);
+        }
+
+        .privacy-clause-block ul {
+            padding-left: 1.75rem;
+            margin-top: 1rem;
+        }
+
+        .privacy-clause-block li {
+            margin-bottom: 0.85rem;
+        }
+
+        /* --- Footer Exact Replica Styles --- */
+        .vireon-footer-wrapper {
+            background: #030914; /* Deep premium midnight base background */
+            border-top: 1px solid var(--border-glow);
+            padding: 5rem 2rem 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-layout-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand-column {
+            flex: 1.3;
+            min-width: 280px;
+        }
+
+        .footer-link-column {
+            flex: 0.8;
+            min-width: 180px;
+        }
+
+        .footer-dispatch-column {
+            flex: 1.2;
+            min-width: 280px;
+        }
+
+        .footer-column-heading {
+            color: var(--text-pure);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.75rem;
+        }
+
+        .footer-navigation-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-navigation-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-navigation-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-navigation-links a:hover {
+            color: var(--color-cyan);
+        }
+
+        /* Dispatch Input Layer */
+        .dispatch-input-container {
+            display: flex;
+            align-items: center;
+            background: #071328;
+            border: 1px solid var(--border-glow);
+            border-radius: 8px;
+            padding: 0.5rem 0.5rem 0.5rem 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .dispatch-email-field {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-pure);
+            font-size: 0.95rem;
+            width: 100%;
+        }
+
+        .dispatch-submit-btn {
+            background: var(--color-cyan);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #030914;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        .dispatch-submit-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Social Icon Row */
+        .footer-social-row {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.75rem;
+        }
+
+        .social-circle-node {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-circle-node:hover {
+            border-color: var(--color-cyan);
+            color: var(--color-cyan);
+            background: rgba(0, 242, 254, 0.05);
+        }
+
+        /* Mobile Spacing Adaptations */
+        @media (max-width: 768px) {
+            .privacy-main-viewport {
+                padding: 120px 1.25rem 4rem 1.25rem;
+            }
+            .privacy-content-card {
+                padding: 2.5rem 1.75rem;
+            }
+            .footer-layout-grid {
+                gap: 2.5rem;
+            }
+            .vireon-footer-wrapper {
+                padding: 4rem 1.25rem 2.5rem 1.25rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header (Maintained for Navigation) -->
+    <!-- ==========================================================================
+         HEADER NAVIGATION LAYER
+         ========================================================================== -->
     <header class="vireon-nav-wrapper" id="vireon-navbar">
         <div class="nav-container">
             <a href="index.html" class="brand-identity">
@@ -21,72 +216,184 @@
                 <ul class="nav-menu-links">
                     <li><a href="index.html#home" class="nav-item-link">Home</a></li>
                     <li><a href="index.html#features" class="nav-item-link">Features</a></li>
+                    <li><a href="index.html#why-vireon" class="nav-item-link">Why Vireon</a></li>
+                    <li><a href="index.html#how-it-works" class="nav-item-link">How It Works</a></li>
                     <li><a href="index.html#platform-info" class="nav-item-link">Certification</a></li>
+                    <li><a href="index.html#faq" class="nav-item-link">FAQ</a></li>
                 </ul>
             </nav>
 
             <div class="nav-actions-block">
-                <button class="theme-toggle-btn" aria-label="Toggle UI Theme"></button>
+                <button class="theme-toggle-btn" aria-label="Toggle UI Color Matrix Theme" title="Switch Aesthetic Display"></button>
                 <a href="reward.html" class="btn-premium btn-cyan">Register Now</a>
-                <button class="mobile-hamburger" aria-label="Open Mobile Menu">
-                    <span></span><span></span><span></span>
+                <button class="mobile-hamburger" aria-label="Open Mobile Navigation Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Privacy Policy Section -->
-    <main class="section-structural-container" style="padding-top: 100px; max-width: 800px; margin: 0 auto; padding-bottom: 50px;">
-        <h1 class="section-main-heading" style="margin-bottom: 0.5rem;">Privacy Policy</h1>
-        <p class="section-sub-label" style="margin-bottom: 2rem;">Last updated: July 2026</p>
+    <!-- ==========================================================================
+         MAIN ARCHITECTURE CONTENT (CIRCULATED EXTRA SPACE)
+         ========================================================================== -->
+    <main class="privacy-main-viewport">
+        <div class="section-header-block" style="margin-bottom: 3.5rem; text-align: left;">
+            <span class="section-sub-label">Legal Architecture</span>
+            <h1 class="section-main-heading" style="font-size: 2.75rem; margin-top: 0.5rem; color: var(--text-pure);">Privacy Policy</h1>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase;">Last updated: January 2026</p>
+        </div>
 
-        <div class="premium-glass-card" style="padding: 2rem;">
-            <h3>1. Introduction</h3>
-            <p>Vireon ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform.</p>
+        <div class="privacy-content-card">
+            
+            <div class="privacy-clause-block">
+                <h3>1. Introduction</h3>
+                <p>Vireon ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform.</p>
+            </div>
 
-            <h3>2. Information We Collect</h3>
-            <p>We may collect:</p>
-            <ul>
-                <li>Personal identification information (name, email address)</li>
-                <li>Payment information (processed securely through Paystack)</li>
-                <li>Usage data (activity completion, points balance, task history)</li>
-                <li>Device and browser information</li>
-                <li>Cookies and similar tracking technologies</li>
-            </ul>
+            <div class="privacy-clause-block">
+                <h3>2. Information We Collect</h3>
+                <p>We may collect:</p>
+                <ul>
+                    <li>Personal identification information (name, email address)</li>
+                    <li>Payment information (processed securely through Paystack)</li>
+                    <li>Usage data (activity completion, points balance, task history)</li>
+                    <li>Device and browser information</li>
+                    <li>Cookies and similar tracking technologies</li>
+                </ul>
+            </div>
 
-            <h3>3. How We Use Your Information</h3>
-            <p>We use your information to:</p>
-            <ul>
-                <li>Provide and maintain the Vireon platform</li>
-                <li>Process payments and manage your account</li>
-                <li>Send updates about your account and rewards</li>
-                <li>Improve our services and user experience</li>
-                <li>Comply with legal obligations</li>
-            </ul>
+            <div class="privacy-clause-block">
+                <h3>3. How We Use Your Information</h3>
+                <p>We use your information to:</p>
+                <ul>
+                    <li>Provide and maintain the Vireon platform</li>
+                    <li>Process payments and manage your account</li>
+                    <li>Send updates about your account and rewards</li>
+                    <li>Improve our services and user experience</li>
+                    <li>Comply with legal obligations</li>
+                </ul>
+            </div>
 
-            <h3>4. Data Storage and Security</h3>
-            <p>Your data is stored securely using Firebase, a Google Cloud service. We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+            <div class="privacy-clause-block">
+                <h3>4. Data Storage and Security</h3>
+                <p>Your data is stored securely using Firebase, a Google Cloud service. We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+            </div>
 
-            <h3>5. Third-Party Services</h3>
-            <p>We use third-party services including Paystack (Payment processing) and Firebase (Data storage and authentication). These services have their own privacy policies.</p>
+            <div class="privacy-clause-block">
+                <h3>5. Third-Party Services</h3>
+                <p>We use third-party services including:</p>
+                <ul>
+                    <li><strong>Paystack</strong> - Payment processing</li>
+                    <li><strong>Firebase</strong> - Data storage and authentication</li>
+                </ul>
+                <p style="margin-top: 0.75rem;">These services have their own privacy policies. We encourage you to review them carefully.</p>
+            </div>
 
-            <h3>6. Your Rights (UK GDPR)</h3>
-            <p>Under UK GDPR, you have the right to access, rectify, request deletion, object to processing, data portability, and withdraw consent of your personal data at any time.</p>
+            <div class="privacy-clause-block">
+                <h3>6. Your Rights (UK GDPR)</h3>
+                <p>Under UK GDPR, you have the right to:</p>
+                <ul>
+                    <li>Access your personal data</li>
+                    <li>Rectify inaccurate data</li>
+                    <li>Request deletion of your data</li>
+                    <li>Object to processing of your data</li>
+                    <li>Data portability</li>
+                    <li>Withdraw consent at any time</li>
+                </ul>
+            </div>
 
-            <h3>7. Cookies</h3>
-            <p>We use cookies to enhance your experience. You can choose to accept or decline cookies through our cookie consent banner.</p>
+            <div class="privacy-clause-block">
+                <h3>7. Cookies</h3>
+                <p>We use cookies to enhance your experience. You can choose to accept or decline cookies through our cookie consent banner. Declining cookies may affect certain functionality.</p>
+            </div>
 
-            <h3>8. Data Retention</h3>
-            <p>We retain your personal data for as long as your account is active or as needed to provide services. You may request deletion of your account and associated data at any time.</p>
+            <div class="privacy-clause-block">
+                <h3>8. Data Retention</h3>
+                <p>We retain your personal data for as long as your account is active or as needed to provide services. You may request deletion of your account and associated data at any time.</p>
+            </div>
 
-            <h3>9. Changes to This Policy</h3>
-            <p>We may update this Privacy Policy from time to time by posting the new policy on this page.</p>
+            <div class="privacy-clause-block">
+                <h3>9. Changes to This Policy</h3>
+                <p>We may update this Privacy Policy from time to time. We will notify you of changes by posting the new policy on this page and updating the "last updated" date.</p>
+            </div>
 
-            <h3>10. Contact Us</h3>
-            <p>Questions? Contact us at <strong>support@vireon-official.site</strong> or visit our contact page.</p>
+            <div class="privacy-clause-block" style="margin-bottom: 0;">
+                <h3>10. Contact Us</h3>
+                <p>Questions about this Privacy Policy? Contact us at <a href="mailto:support@vireon-official.site" style="color: var(--color-cyan); text-decoration: none; font-weight: bold;">support@vireon-official.site</a> or visit our contact page.</p>
+            </div>
+
         </div>
     </main>
 
+    <!-- ==========================================================================
+         FOOTER LAYER (EXACT ARCHITECTURAL REPLICA FROM SCREENSHOT)
+         ========================================================================== -->
+    <footer class="vireon-footer-wrapper">
+        <div class="footer-layout-grid">
+            
+            <!-- Left Branding Unit -->
+            <div class="footer-brand-column">
+                <div class="logo-container" style="margin-bottom: 1.5rem;">
+                    <img src="logo.png" alt="Vireon Logo" class="brand-logo" style="width: 140px;">
+                </div>
+                <p style="color: var(--text-main); font-size: 0.98rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                    Leading contemporary digital transformation activity clearinghouses. Bridging global audience metrics with analytical optimization programs completely in British Pounds.
+                </p>
+                <!-- Social Channels -->
+                <div class="footer-social-row">
+                    <a href="#" class="social-circle-node" title="X">✕</a>
+                    <a href="#" class="social-circle-node" title="LinkedIn">in</a>
+                    <a href="#" class="social-circle-node" title="Instagram">ig</a>
+                </div>
+            </div>
+
+            <!-- Ecosystem Core Column -->
+            <div class="footer-link-column">
+                <h4 class="footer-column-heading">Ecosystem Core</h4>
+                <ul class="footer-navigation-links">
+                    <li><a href="index.html#home">Home Matrix</a></li>
+                    <li><a href="index.html#features">11 Program Tiers</a></li>
+                    <li><a href="index.html#why-vireon">Core Architecture</a></li>
+                    <li><a href="index.html#how-it-works">Onboarding Steps</a></li>
+                </ul>
+            </div>
+
+            <!-- Compliance Deck Column -->
+            <div class="footer-link-column">
+                <h4 class="footer-column-heading">Compliance Deck</h4>
+                <ul class="footer-navigation-links">
+                    <li><a href="privacy.html" style="color: var(--color-cyan); font-weight: 600;">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Operation</a></li>
+                    <li><a href="#">Corporate Contact</a></li>
+                    <li><a href="index.html#faq">Ecosystem FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- Global Dispatch Action Column -->
+            <div class="footer-dispatch-column">
+                <h4 class="footer-column-heading">Global Dispatch</h4>
+                <p style="color: var(--text-main); font-size: 0.98rem; line-height: 1.6;">
+                    Subscribe to receive instant updates regarding newly deployed tracking campaigns.
+                </p>
+                <div class="dispatch-input-container">
+                    <input type="email" placeholder="Enter security email..." class="dispatch-email-field" aria-label="Email subscription input field">
+                    <button class="dispatch-submit-btn" aria-label="Subscribe button">→</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Trademark Sub-node -->
+        <div style="max-width: 1200px; margin: 0 auto; padding-top: 2.5rem; margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: left;">
+            <p style="color: var(--text-muted); font-size: 0.88rem; letter-spacing: 0.02em;">
+                &copy; 2026 Vireon Digital International Ltd. All absolute rights reserved across unified global registry nodes.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Script Execution Hooks -->
     <script src="script.js"></script>
 </body>
 </html>
