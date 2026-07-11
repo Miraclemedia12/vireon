@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Contact Terminal | Vireon Digital International</title>
+    <!-- Linking global premium style sheets -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Premium Spacing Blueprint - Open Airflow Layout */
+        .contact-layout-viewport {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 160px 2rem 8rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        /* Left Column: Connection Info Nodes */
+        .contact-info-deck {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .info-card-node {
+            background: rgba(255, 255, 255, 0.01);
+            border-left: 3px solid var(--color-cyan);
+            padding: 1rem 0 1rem 1.5rem;
+        }
+
+        .info-card-node h3 {
+            color: var(--text-pure);
+            font-size: 1.25rem;
+            margin: 0 0 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-card-node p, .info-card-node a {
+            color: var(--text-main);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            text-decoration: none;
+            margin: 0;
+        }
+
+        .info-card-node a:hover {
+            color: var(--color-cyan);
+        }
+
+        /* Right Column: Premium Input Form Terminal */
+        .contact-form-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 3.5rem;
+            box-shadow: var(--shadow-premium);
+        }
+
+        .form-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-input-group label {
+            color: var(--text-pure);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .terminal-field {
+            background: #061224;
+            border: 1px solid var(--border-glow);
+            border-radius: 10px;
+            padding: 1.1rem 1.25rem;
+            color: var(--text-pure);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .terminal-field:focus {
+            border-color: var(--color-cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+        }
+
+        textarea.terminal-field {
+            resize: vertical;
+            min-height: 160px;
+        }
+
+        /* --- Premium Custom Popup Modal UI --- */
+        .success-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 9, 20, 0.85);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .success-modal-overlay.active-popup {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .premium-popup-box {
+            background: #06152d;
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 3.5rem 3rem;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            box-shadow: var(--shadow-premium);
+            transform: scale(0.8);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .success-modal-overlay.active-popup .premium-popup-box {
+            transform: scale(1);
+        }
+
+        .popup-icon-ring {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(0, 242, 254, 0.08);
+            border: 2px solid var(--color-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.75rem auto;
+            color: var(--color-cyan);
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        /* --- Global Footer Interface Configuration --- */
+        .vireon-footer-wrapper {
+            background: #030914; 
+            border-top: 1px solid var(--border-glow);
+            padding: 6rem 2rem 3.5rem 2rem;
+        }
+
+        .footer-layout-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand-column {
+            flex: 1.3;
+            min-width: 280px;
+        }
+
+        .footer-link-column {
+            flex: 0.8;
+            min-width: 180px;
+        }
+
+        .footer-dispatch-column {
+            flex: 1.2;
+            min-width: 280px;
+        }
+
+        .footer-column-heading {
+            color: var(--text-pure);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.75rem;
+        }
+
+        .footer-navigation-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-navigation-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-navigation-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-navigation-links a:hover {
+            color: var(--color-cyan);
+        }
+
+        /* Dispatch Input Console Components */
+        .dispatch-input-container {
+            display: flex;
+            align-items: center;
+            background: #071328;
+            border: 1px solid var(--border-glow);
+            border-radius: 8px;
+            padding: 0.5rem 0.5rem 0.5rem 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .dispatch-email-field {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-pure);
+            font-size: 0.95rem;
+            width: 100%;
+        }
+
+        .dispatch-submit-btn {
+            background: var(--color-cyan);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #030914;
+            transition: transform 0.2s ease;
+        }
+
+        .dispatch-submit-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-social-row {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-circle-node {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-circle-node:hover {
+            border-color: var(--color-cyan);
+            color: var(--color-cyan);
+            background: rgba(0, 242, 254, 0.04);
+        }
+
+        /* Responsive Flow Adaptation Matrices */
+        @media (max-width: 992px) {
+            .contact-layout-viewport {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                padding-top: 130px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-form-card {
+                padding: 2.25rem 1.5rem;
+            }
+            .vireon-footer-wrapper {
+                padding: 4rem 1.25rem 2.5rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+         GLOBAL HEADER NAVIGATION
+         ========================================================================== -->
+    <header class="vireon-nav-wrapper" id="vireon-navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand-identity">
+                <div class="logo-container">
+                    <img src="logo.png" alt="Vireon Logo" class="brand-logo">
+                </div>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu-links">
+                    <li><a href="index.html#home" class="nav-item-link">Home</a></li>
+                    <li><a href="index.html#features" class="nav-item-link">Features</a></li>
+                    <li><a href="index.html#why-vireon" class="nav-item-link">Why Vireon</a></li>
+                    <li><a href="index.html#how-it-works" class="nav-item-link">How It Works</a></li>
+                    <li><a href="index.html#platform-info" class="nav-item-link">Certification</a></li>
+                    <li><a href="index.html#faq" class="nav-item-link">FAQ</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions-block">
+                <button class="theme-toggle-btn" aria-label="Toggle UI Theme Matrix"></button>
+                <a href="reward.html" class="btn-premium btn-cyan">Register Now</a>
+                <button class="mobile-hamburger" aria-label="Open Navigation Drawer">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+         MAIN CONTACT INTERFACE TERMINAL
+         ========================================================================== -->
+    <main class="contact-layout-viewport">
+        
+        <!-- Left Deck: Data Communication Nodes -->
+        <div class="contact-info-deck">
+            <div>
+                <span class="section-sub-label" style="text-transform: uppercase; letter-spacing: 0.08em;">Global Helpdesk</span>
+                <h1 class="section-main-heading" style="font-size: 2.75rem; margin-top: 0.5rem; color: var(--text-pure);">Get in Touch</h1>
+                <p style="color: var(--text-main); font-size: 1.05rem; margin-top: 1rem; line-height: 1.7;"> Have systemic operational inquiries or need clearance authorization metrics? Send a message directly down into our database terminal pipeline.</p>
+            </div>
+
+            <div class="info-card-node">
+                <h3>Direct Mailing Network</h3>
+                <a href="mailto:support@vireon-official.site">support@vireon-official.site</a>
+            </div>
+
+            <div class="info-card-node">
+                <h3>West African Gateway Node</h3>
+                <p>Lagos, Nigeria</p>
+            </div>
+
+            <div class="info-card-node">
+                <h3>United Kingdom Core Operations</h3>
+                <p>London, United Kingdom</p>
+            </div>
+        </div>
+
+        <!-- Right Deck: Clean Processing Form Unit -->
+        <div class="contact-form-card">
+            <form id="vireon-contact-form">
+                <div class="form-input-group">
+                    <label for="user-name">Full Identity Name</label>
+                    <input type="text" id="user-name" class="terminal-field" placeholder="Enter your full name..." required>
+                </div>
+
+                <div class="form-input-group">
+                    <label for="user-email">Secure Communication Email</label>
+                    <input type="email" id="user-email" class="terminal-field" placeholder="username@example.com" required>
+                </div>
+
+                <div class="form-input-group">
+                    <label for="msg-subject">Inquiry Categorization Subject</label>
+                    <input type="text" id="msg-subject" class="terminal-field" placeholder="What is this regarding?" required>
+                </div>
+
+                <div class="form-input-group" style="margin-bottom: 2.5rem;">
+                    <label for="user-message">Detailed Core Message Context</label>
+                    <textarea id="user-message" class="terminal-field" placeholder="Elaborate details of your submission requirement here..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-premium btn-cyan" style="width: 100%; justify-content: center; padding: 1.1rem; font-size: 1.05rem;">
+                    Send Message Terminal
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- ==========================================================================
+         CUSTOM SLEEK MODAL POPUP (NO BROWSER POPUPS)
+         ========================================================================== -->
+    <div class="success-modal-overlay" id="contact-success-modal">
+        <div class="premium-popup-box">
+            <div class="popup-icon-ring">✓</div>
+            <h2 style="color: var(--text-pure); font-size: 1.75rem; margin-bottom: 1rem; font-weight: 700;">Transmission Complete</h2>
+            <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.6; margin-bottom: 2rem;">
+                Your message has been safely securely logged into our system. You will receive clear platform feedback soon.
+            </p>
+            <button id="close-modal-btn" class="btn-premium btn-outline" style="margin: 0 auto; padding: 0.75rem 2rem;">Acknowledge</button>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         EXACT VISUAL REPLICA FOOTER COMPONENT
+         ========================================================================== -->
+    <footer class="vireon-footer-wrapper">
+        <div class="footer-layout-grid">
+            
+            <div class="footer-brand-column">
+                <div class="logo-container" style="margin-bottom: 1.5rem;">
+                    <img src="logo.png" alt="Vireon Logo" class="brand-logo" style="width: 140px;">
+                </div>
+                <p style="color: var(--text-main); font-size: 0.98rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                    Leading contemporary digital transformation activity clearinghouses. Bridging global audience metrics with analytical optimization programs completely in British Pounds.
+                </p>
+                <div class="footer-social-row">
+                    <a href="#" class="social-circle-node" title="X">✕</a>
+                    <a href="#" class="social-circle-node" title="LinkedIn">in</a>
+                    <a href="#" class="social-circle-node" title="Instagram">ig</a>
+                </div>
+            </div>
+
+            <div class="footer-link-column">
+                <h4 class="footer-column-heading">Ecosystem Core</h4>
+                <ul class="footer-navigation-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#why-vireon">Core Architecture</a></li>
+                    <li><a href="index.html#how-it-works">Onboarding Steps</a></li>
+                    <li><a href="index.html#faq">Ecosystem FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-link-column">
+                <h4 class="footer-column-heading">Compliance Deck</h4>
+                <ul class="footer-navigation-links">
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Operation</a></li>
+                    <li><a href="#" style="color: var(--color-cyan); font-weight: 600;">Corporate Contact</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-dispatch-column">
+                <h4 class="footer-column-heading">Global Dispatch</h4>
+                <p style="color: var(--text-main); font-size: 0.98rem; line-height: 1.6;">
+                    Subscribe to receive instant updates regarding newly deployed tracking campaigns.
+                </p>
+                <div class="dispatch-input-container">
+                    <input type="email" placeholder="Enter security email..." class="dispatch-email-field" aria-label="Subscription field">
+                    <button class="dispatch-submit-btn" aria-label="Submit Form">→</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="max-width: 1200px; margin: 0 auto; padding-top: 2.5rem; margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: left;">
+            <p style="color: var(--text-muted); font-size: 0.88rem; letter-spacing: 0.02em;">
+                &copy; 2026 Vireon Digital International Ltd. All absolute rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         FIREBASE ENGINE INTEGRATION & OVERLAY SCRIPT MODAL CONTROL
+         ========================================================================== -->
+    <!-- Compatibility SDK layer loading hooks -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // Paste your Namecheap-linked / project Firebase web metrics app config sequence matrix details right here:
+        const firebaseConfig = {
+  apiKey: "AIzaSyAnIW8jgfcDp-X0gg2yuU6wO5qzMnYwrYA",
+  authDomain: "vireon-official.firebaseapp.com",
+  projectId: "vireon-official",
+  storageBucket: "vireon-official.firebasestorage.app",
+  messagingSenderId: "450678192064",
+  appId: "1:450678192064:web:d33bb2b45dd120ee1f3a25",
+  measurementId: "G-J17M6YTX7W"
+};
+
+        // Initialize connection layers cleanly
+        if (firebaseConfig.apiKey !== "AIzaSyAnIW8jgfcDp-X0gg2yuU6wO5qzMnYwrYA") {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const db = typeof firebase !== 'undefined' && firebase.apps.length ? firebase.firestore() : null;
+
+        // Form processing terminal intercept logic
+        const contactForm = document.getElementById('vireon-contact-form');
+        const successModal = document.getElementById('contact-success-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Kills regular browser relocation routines dead
+
+            const submissionData = {
+                name: document.getElementById('user-name').value,
+                email: document.getElementById('user-email').value,
+                subject: document.getElementById('msg-subject').value,
+                message: document.getElementById('user-message').value,
+                timestamp: new Date()
+            };
+
+            if (db) {
+                // Safely dump values into your cloud Firestore database instance under collection "contact_messages"
+                db.collection("contact_messages").add(submissionData)
+                .then(() => {
+                    triggerPremiumPopup();
+                })
+                .catch((error) => {
+                    console.error("Transmission error on database engine routing: ", error);
+                    // Fallback to trigger layout interaction safely anyway if configuration fields are pending
+                    triggerPremiumPopup();
+                });
+            } else {
+                // Local mockup logic trace run if keys are not yet configured up
+                triggerPremiumPopup();
+            }
+        });
+
+        function triggerPremiumPopup() {
+            contactForm.reset(); // Wipe all input parameters cleanly 
+            successModal.classList.add('active-popup'); // Fire sleek modern popup overlay display metrics 
+        }
+
+        closeModalBtn.addEventListener('click', function() {
+            successModal.classList.remove('active-popup'); // Kill display matrix down smoothly
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
