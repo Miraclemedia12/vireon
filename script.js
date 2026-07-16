@@ -559,3 +559,41 @@ const navLinks = document.querySelector('.nav-links');
 mobileMenu.addEventListener('click', () => {
     navLinks.style.display = (navLinks.style.display === 'block') ? 'none' : 'block';
 });
+
+// ==========================================================================
+// SECURITY & IN-BROWSER INSPECTION SHIELD
+// ==========================================================================
+
+// 1. Disable Right-Click Context Menu
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+});
+
+// 2. Shield Source Code from Keyboard Shortcuts
+document.addEventListener('keydown', function (e) {
+    // Disable F12 (Developer Console)
+    if (e.key === 'F12' || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+    }
+
+    // Disable Ctrl+Shift+I (Inspect Element)
+    // Disable Ctrl+Shift+J (Web Console)
+    // Disable Ctrl+Shift+C (Inspect Element Selector)
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+        e.preventDefault();
+        return false;
+    }
+
+    // Disable Ctrl+U (View Page Source)
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.keyCode === 85)) {
+        e.preventDefault();
+        return false;
+    }
+
+    // Disable Ctrl+S (Save Webpage Local File System)
+    if (e.ctrlKey && (e.key === 's' || e.key === 'S' || e.keyCode === 83)) {
+        e.preventDefault();
+        return false;
+    }
+});
