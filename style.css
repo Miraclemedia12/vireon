@@ -1428,3 +1428,98 @@ body.cursor-hover .custom-cursor-follower {
     /* Make the logo bigger as you requested */
     .brand-logo { width: 120px; } 
 }
+
+/* ==========================================================================
+   INFINITE BRAND LOGO SLIDER SYSTEM
+   ========================================================================== */
+.logo-slider-section {
+    padding: 3.5rem 0;
+    background: rgba(7, 19, 40, 0.4);
+    border-top: 1px solid var(--border-glow);
+    border-bottom: 1px solid var(--border-glow);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+/* Subtle gradient masks to fade logos out seamlessly on the edges */
+.logo-slider-section::before,
+.logo-slider-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.logo-slider-section::before {
+    left: 0;
+    background: linear-gradient(to right, #030914 0%, rgba(3, 9, 20, 0) 100%);
+}
+
+.logo-slider-section::after {
+    right: 0;
+    background: linear-gradient(to left, #030914 0%, rgba(3, 9, 20, 0) 100%);
+}
+
+.logo-slider {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+.logo-track {
+    display: flex;
+    align-items: center;
+    gap: 4.5rem; /* Generates space between items */
+    width: max-content;
+    animation: endlessLogoScroll 35s linear infinite;
+}
+
+.logo-track img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.55;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+    filter: grayscale(100%) brightness(180%);
+}
+
+.logo-track img:hover {
+    opacity: 1;
+    filter: none; /* Restores branding color beautifully on hover */
+}
+
+/* Custom stats inside slider setup */
+.logo-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-cyan, #00f2fe);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+    background: rgba(0, 242, 254, 0.05);
+    border: 1px solid rgba(0, 242, 254, 0.15);
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.05);
+}
+
+.logo-stat i {
+    font-size: 1.1rem;
+}
+
+/* Infinite Hardware-Accelerated Sliding Animation */
+@keyframes endlessLogoScroll {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        /* Translating exactly 50% shifts first set to duplicate set seamlessly */
+        transform: translate3d(-50%, 0, 0);
+    }
+}
